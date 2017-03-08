@@ -6,9 +6,12 @@
 //  Copyright (c) 2012-2014 adjust GmbH. All rights reserved.
 //
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #import "ADJActivityHandler.h"
+#endif
 
+#if TARGET_OS_IPHONE
 @interface UIDevice(ADJAdditions)
 
 - (BOOL)adjTrackingEnabled;
@@ -21,3 +24,4 @@
 - (void)adjSetIad:(ADJActivityHandler *)activityHandler
       triesV3Left:(int)triesV3Left;
 @end
+#endif

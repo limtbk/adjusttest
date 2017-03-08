@@ -15,7 +15,7 @@
 #import "ADJTimerCycle.h"
 #import "ADJTimerOnce.h"
 #import "ADJUtil.h"
-#import "UIDevice+ADJAdditions.h"
+//#import "UIDevice+ADJAdditions.h"
 #import "ADJAdjustFactory.h"
 #import "ADJAttributionHandler.h"
 #import "NSString+ADJAdditions.h"
@@ -425,7 +425,7 @@ remainsPausedMessage:(NSString *)remainsPausedMessage
         if (error.code == AdjADClientErrorUnknown) {
             dispatch_time_t retryTime = dispatch_time(DISPATCH_TIME_NOW, kDelayRetryIad);
             dispatch_after(retryTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-                [[UIDevice currentDevice] adjSetIad:self triesV3Left:retriesLeft];
+//                [[UIDevice currentDevice] adjSetIad:self triesV3Left:retriesLeft];
             });
         }
         return;
@@ -707,7 +707,7 @@ sessionParametersActionsArray:(NSArray*)sessionParametersActionsArray
     selfI.sdkClickHandler = [ADJAdjustFactory sdkClickHandlerWithStartsPaused:[selfI toSendI:selfI
                                                                         sdkClickHandlerOnly:YES]];
 
-    [[UIDevice currentDevice] adjSetIad:selfI triesV3Left:kTryIadV3];
+//    [[UIDevice currentDevice] adjSetIad:selfI triesV3Left:kTryIadV3];
 
     [selfI sessionParametersActionsI:selfI sessionParametersActionsArray:sessionParametersActionsArray];
 
@@ -1616,20 +1616,20 @@ sdkClickHandlerOnly:(BOOL)sdkClickHandlerOnly
     NSNotificationCenter *center = NSNotificationCenter.defaultCenter;
 
     [center removeObserver:self];
-    [center addObserver:self
-               selector:@selector(applicationDidBecomeActive)
-                   name:UIApplicationDidBecomeActiveNotification
-                 object:nil];
-
-    [center addObserver:self
-               selector:@selector(applicationWillResignActive)
-                   name:UIApplicationWillResignActiveNotification
-                 object:nil];
-
-    [center addObserver:self
-               selector:@selector(removeNotificationObserver)
-                   name:UIApplicationWillTerminateNotification
-                 object:nil];
+//    [center addObserver:self
+//               selector:@selector(applicationDidBecomeActive)
+//                   name:UIApplicationDidBecomeActiveNotification
+//                 object:nil];
+//
+//    [center addObserver:self
+//               selector:@selector(applicationWillResignActive)
+//                   name:UIApplicationWillResignActiveNotification
+//                 object:nil];
+//
+//    [center addObserver:self
+//               selector:@selector(removeNotificationObserver)
+//                   name:UIApplicationWillTerminateNotification
+//                 object:nil];
 }
 
 - (void)removeNotificationObserver {

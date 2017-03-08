@@ -8,7 +8,7 @@
 
 #import "ADJKeychain.h"
 #import "ADJActivityState.h"
-#import "UIDevice+ADJAdditions.h"
+//#import "UIDevice+ADJAdditions.h"
 
 static const int kTransactionIdCount = 10;
 
@@ -23,7 +23,7 @@ static const int kTransactionIdCount = 10;
         return nil;
     }
 
-    [self assignUuid:[UIDevice.currentDevice adjCreateUuid]];
+//    [self assignUuid:[UIDevice.currentDevice adjCreateUuid]];
 
     self.eventCount         = 0;
     self.sessionCount       = 0;
@@ -129,7 +129,7 @@ static const int kTransactionIdCount = 10;
     }
 
     if (self.uuid == nil) {
-        [self assignUuid:[UIDevice.currentDevice adjCreateUuid]];
+//        [self assignUuid:[UIDevice.currentDevice adjCreateUuid]];
     }
 
     if ([decoder containsValueForKey:@"transactionIds"]) {

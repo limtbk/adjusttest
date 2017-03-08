@@ -11,9 +11,9 @@
 
 #import <sys/sysctl.h>
 
-#if !ADJUST_NO_IDFA
-#import <AdSupport/ASIdentifierManager.h>
-#endif
+//#if !ADJUST_NO_IDFA
+//#import <AdSupport/ASIdentifierManager.h>
+//#endif
 
 #if !ADJUST_NO_IAD && !TARGET_OS_TV
 #import <iAd/iAd.h>

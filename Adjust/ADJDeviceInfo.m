@@ -7,7 +7,7 @@
 //
 
 #import "ADJDeviceInfo.h"
-#import "UIDevice+ADJAdditions.h"
+//#import "UIDevice+ADJAdditions.h"
 #import "NSString+ADJAdditions.h"
 #import "ADJUtil.h"
 #import "ADJSystemProfile.h"
@@ -23,24 +23,24 @@
     self = [super init];
     if (self == nil) return nil;
 
-    UIDevice *device = UIDevice.currentDevice;
+//    UIDevice *device = UIDevice.currentDevice;
     NSLocale *locale = NSLocale.currentLocale;
     NSBundle *bundle = NSBundle.mainBundle;
     NSDictionary *infoDictionary = bundle.infoDictionary;
 
-    self.trackingEnabled  = UIDevice.currentDevice.adjTrackingEnabled;
-    self.idForAdvertisers = UIDevice.currentDevice.adjIdForAdvertisers;
-    self.fbAttributionId  = UIDevice.currentDevice.adjFbAttributionId;
-    self.vendorId         = UIDevice.currentDevice.adjVendorId;
+//    self.trackingEnabled  = UIDevice.currentDevice.adjTrackingEnabled;
+//    self.idForAdvertisers = UIDevice.currentDevice.adjIdForAdvertisers;
+//    self.fbAttributionId  = UIDevice.currentDevice.adjFbAttributionId;
+//    self.vendorId         = UIDevice.currentDevice.adjVendorId;
     self.bundeIdentifier  = [infoDictionary objectForKey:(NSString *)kCFBundleIdentifierKey];
     self.bundleVersion    = [infoDictionary objectForKey:(NSString *)kCFBundleVersionKey];
     self.bundleShortVersion = [bundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
     self.languageCode     = [locale objectForKey:NSLocaleLanguageCode];
     self.countryCode      = [locale objectForKey:NSLocaleCountryCode];
     self.osName           = @"ios";
-    self.deviceType       = device.adjDeviceType;
-    self.deviceName       = device.adjDeviceName;
-    self.systemVersion    = device.systemVersion;
+//    self.deviceType       = device.adjDeviceType;
+//    self.deviceName       = device.adjDeviceName;
+//    self.systemVersion    = device.systemVersion;
     self.machineModel     = [ADJSystemProfile machineModel];
     self.cpuSubtype       = [ADJSystemProfile cpuSubtype];
     self.osBuild          = [ADJSystemProfile osVersion];

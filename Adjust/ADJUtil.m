@@ -14,7 +14,7 @@
 #import "ADJLogger.h"
 #import "ADJResponseData.h"
 #import "ADJAdjustFactory.h"
-#import "UIDevice+ADJAdditions.h"
+//#import "UIDevice+ADJAdditions.h"
 #import "NSString+ADJAdditions.h"
 #import <objc/message.h>
 
@@ -554,7 +554,7 @@ responseDataHandler:(void (^)(ADJResponseData *responseData))responseDataHandler
 }
 
 + (NSString *)idfa {
-    return [[UIDevice currentDevice] adjIdForAdvertisers];
+    return nil;//[[UIDevice currentDevice] adjIdForAdvertisers];
 }
 
 + (NSURL *)convertUniversalLink:(NSURL *)url scheme:(NSString *)scheme {
@@ -856,49 +856,49 @@ responseDataHandler:(void (^)(ADJResponseData *responseData))responseDataHandler
 }
 
 + (void)launchDeepLinkMain:(NSURL *)deepLinkUrl {
-    UIApplication * sharedUIApplication = [UIApplication sharedApplication];
+//    UIApplication * sharedUIApplication = [UIApplication sharedApplication];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     SEL openUrlSelector = @selector(openURL:options:completionHandler:);
 #pragma clang diagnostic pop
 
-    if ([sharedUIApplication respondsToSelector:openUrlSelector]) {
-        /*
-         [sharedUIApplication openURL:deepLinkUrl options:@{} completionHandler:^(BOOL success) {
-         if (!success) {
-         [ADJAdjustFactory.logger error:@"Unable to open deep link (%@)", deepLinkUrl];
-         }
-         }];
-         */
-
-        NSMethodSignature * methSig = [sharedUIApplication methodSignatureForSelector: openUrlSelector];
-        NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: methSig];
-
-        [invocation setSelector: openUrlSelector];
-        [invocation setTarget: sharedUIApplication];
-
-        NSDictionary * emptyDictionary = @{};
-        void (^completion)(BOOL) = ^(BOOL success) {
-            if (!success) {
-                [ADJAdjustFactory.logger error:@"Unable to open deep link (%@)", deepLinkUrl];
-            }
-        };
-
-        [invocation setArgument: &deepLinkUrl  atIndex: 2];
-        [invocation setArgument: &emptyDictionary atIndex: 3];
-        [invocation setArgument: &completion  atIndex: 4];
-
-        [invocation invoke];
-    } else {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
-        BOOL success = [sharedUIApplication openURL:deepLinkUrl];
-#pragma clang diagnostic pop
-
-        if (!success) {
-            [ADJAdjustFactory.logger error:@"Unable to open deep link (%@)", deepLinkUrl];
-        }
-    }
+//    if ([sharedUIApplication respondsToSelector:openUrlSelector]) {
+//        /*
+//         [sharedUIApplication openURL:deepLinkUrl options:@{} completionHandler:^(BOOL success) {
+//         if (!success) {
+//         [ADJAdjustFactory.logger error:@"Unable to open deep link (%@)", deepLinkUrl];
+//         }
+//         }];
+//         */
+//
+//        NSMethodSignature * methSig = [sharedUIApplication methodSignatureForSelector: openUrlSelector];
+//        NSInvocation * invocation = [NSInvocation invocationWithMethodSignature: methSig];
+//
+//        [invocation setSelector: openUrlSelector];
+//        [invocation setTarget: sharedUIApplication];
+//
+//        NSDictionary * emptyDictionary = @{};
+//        void (^completion)(BOOL) = ^(BOOL success) {
+//            if (!success) {
+//                [ADJAdjustFactory.logger error:@"Unable to open deep link (%@)", deepLinkUrl];
+//            }
+//        };
+//
+//        [invocation setArgument: &deepLinkUrl  atIndex: 2];
+//        [invocation setArgument: &emptyDictionary atIndex: 3];
+//        [invocation setArgument: &completion  atIndex: 4];
+//
+//        [invocation invoke];
+//    } else {
+//#pragma clang diagnostic push
+//#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+//        BOOL success = [sharedUIApplication openURL:deepLinkUrl];
+//#pragma clang diagnostic pop
+//
+//        if (!success) {
+//            [ADJAdjustFactory.logger error:@"Unable to open deep link (%@)", deepLinkUrl];
+//        }
+//    }
 }
 
 + (NSString*)convertDeviceToken:(NSData*)deviceToken {
